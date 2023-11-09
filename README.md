@@ -78,17 +78,17 @@ class Perceptron:
 df = pd.read_csv('IRIS.csv')
 print(df.head())
 
-## EXTRACT THE LABEL COLOUMN:
+EXTRACT THE LABEL COLOUMN:
 y = df.iloc[:,4].values
 
-## EXTRACT FEATURES:
+EXTRACT FEATURES:
 x = df.iloc[:,0:3].values
 
-## REDUCE DIMENSIONALITY OF THE DATA:
+REDUCE DIMENSIONALITY OF THE DATA:
 x = x[0:100, 0:2]
 y = y[0:100]
 
-## PLOT IRIS SETOSA SAMPLES:
+PLOT IRIS SETOSA SAMPLES:
 plt.scatter(x[:50,0], x[:50,1], color='orange', marker='o', label='Setosa')
 #plot Iris Versicolour samples
 plt.scatter(x[50:100,0], x[50:100,1], color='blue', marker='x', label='Versicolour')
@@ -99,15 +99,15 @@ plt.legend(loc='upper left')
 #show the plot
 plt.show()
 
-## MAP LABELS TO A BINARY INTEGEER VALUE:
+MAP LABELS TO A BINARY INTEGEER VALUE:
 y = np.where(y == 'Iris-Setosa',1,-1)
 x[:,0] = (x[:,0] - x[:,0].mean()) / x[:,0].std()
 x[:,1] = (x[:,1] - x[:,1].mean()) / x[:,1].std()
 
-## SPLIT THE DATA:
+SPLIT THE DATA:
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25,random_state=0)
 
-## PLOT THE NUMBER OF ERRORS DURING EACH ITERATION:
+PLOT THE NUMBER OF ERRORS DURING EACH ITERATION:
 plt.plot(range(1,len(classifier.misclassified_samples)+1),classifier.misclassified_samples, marker='o')
 plt.xlabel('Epoch')
 plt.ylabel('Errors')
